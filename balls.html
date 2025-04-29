@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Balls Animation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+
+        .ball {
+            position: absolute;
+            top: 0;
+            border-radius: 50%;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            /* Add shadow for depth */
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.2));
+            /* Simulate light reflection */
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        const balls = [
+            { radius: 50, color: 'red', position: 0, velocity: 0, mass: 2 },
+            { radius: 30, color: 'blue', position: 0, velocity: 0, mass: 1 },
+            { radius: 40, color: 'green', position: 0, velocity: 0, mass: 1.5 },
+            { radius: 20, color: 'purple', position: 0, velocity: 0, mass: 0.8 },
+            { radius: 35, color: 'orange', position: 0, velocity: 0, mass: 1.2 },
+            { radius: 25, color: 'yellow', position: 0, velocity: 0, mass: 0.9 },
+            { radius: 45, color: 'pink', position: 0, velocity: 0, mass: 1.8 },
+            {
+                radius: 55, color: 'cyan', position: 0, velocity: 0, mass: 2.5
+            },
+            {
+                radius: 60, color: 'magenta', position: 0, velocity: 0, mass: 3.0
+            },
+            {
+                radius: 70, color: 'lime', position: 0, velocity: 0, mass: 3.5
+            },
+            {
+                radius: 80, color: 'teal', position: 0, velocity: 0, mass: 4.0
+            },
+            {
+                radius: 90, color: 'navy', position: 0, velocity: 0, mass: 4.5
+            }
+        ];
+
+        const gravity = 0.5; // Base gravity acceleration
+        const bounceFactor = 0.7; // Energy retained after bounce
+        const airResistance = 0.99; // Simulate air resistance
+
+        balls.forEach((ball, index) => {
+            const ballElement = document.createElement('div');
+            ballElement.classList.add('ball');
+            ballElement.style.width = ball.radius * 2 + 'px';
+            ballElement.style.height = ball.radius * 2 + 'px';
+            ballElement.style.backgroundColor = ball.color;
+            ballElement.style.left = `${(index + 1) * 12}%`;
+            ballElement.style.transform = 'translateX(-50%)';
+            ball.element = ballElement;
+            ball.floor = window.innerHeight - ball.radius * 2; // Floor position for each ball
+            document.body.appendChild(ballElement);
+        });
+
+        function animate() {
+            balls.forEach(ball => {
+                const effectiveGravity = gravity * ball.mass; // Adjust gravity based on mass
+                ball.velocity += effectiveGravity; // Apply gravity
+                ball.velocity *= airResistance; // Apply air resistance
+                ball.position += ball.velocity; // Update position
+
+                if (ball.position > ball.floor) {
+                    ball.position = ball.floor; // Keep ball on the floor
+                    ball.velocity *= -bounceFactor; // Reverse velocity and apply bounce factor
+                }
+
+                ball.element.style.top = ball.position + 'px'; // Update ball position
+            });
+
+            requestAnimationFrame(animate); // Continue animation
+        }
+
+        animate(); // Start animation
+    </script>
+</body>
+
+</html>

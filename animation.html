@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Examples</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+            flex-wrap: wrap;
+        }
+
+        .ball {
+            width: 50px;
+            height: 50px;
+            background-color: #ff4500;
+            border-radius: 50%;
+            position: relative;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-200px);
+            }
+        }
+
+        .square {
+            width: 50px;
+            height: 50px;
+            background-color: #32cd32;
+            animation: rotate 3s infinite linear reverse;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotateY(0deg);
+            }
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+
+        .fade {
+            width: 50px;
+            height: 50px;
+            background-color: #1e90ff;
+            animation: fade 4s infinite;
+        }
+
+        @keyframes fade {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+        .scale {
+            width: 50px;
+            height: 50px;
+            background-color: #ff1493;
+            animation: scale 1s infinite ease-in-out, fade 2s infinite;
+        }
+
+        @keyframes scale {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+        }
+
+        .slide {
+            width: 50px;
+            height: 50px;
+            background-color: #ffa500;
+            animation: slide 3s infinite ease-in-out;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(200px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .colorfadein {
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 50px;
+            font-weight: bold;
+       
+            animation: colorfadein 3s infinite;
+        }
+        @keyframes colorfadein {
+            0% {
+                color: #e3e0e2;
+            }
+            50% {
+                color: #8a2be2;
+            }
+            100% {
+                color: #ddd0e0;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="ball"></div>
+    <div class="square"></div>
+    <div class="fade"></div>
+    <div class="scale"></div>
+    <div class="slide"></div>
+    <div class="colorfadein">HI IAM ASBIN</div>
+</body>
+</html>

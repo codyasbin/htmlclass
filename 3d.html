@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Transform Examples</title>
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #ff6f61, #6b5b95);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+
+        .perspective:hover {
+            perspective: 500px;
+        }
+
+        .rotate3d:hover {
+            transform: rotate3d(1, 1, 0, 180deg);
+            transition: transform 1s ease;
+        }
+
+        .rotateX:hover {
+            transform: rotateX(180deg);
+            transition: transform 1s ease;
+        }
+
+        .rotateY:hover {
+            transform: rotateY(180deg);
+            transition: transform 1s ease;
+        }
+
+        .rotateZ:hover {
+            transform: rotateZ(360deg);
+            transition: transform 1.5s ease;
+        }
+
+        .translate3d:hover {
+            transform: translate3d(50px, 50px, 50px);
+        }
+
+        .translateZ:hover {
+            transform: translateZ(50px);
+        }
+
+        .scale3d:hover {
+            transform: scale3d(1.5, 1.5, 1.5);
+            transition: transform 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="box perspective">Perspective</div>
+    <div class="box rotate3d">Rotate3D</div>
+    <div class="box rotateX">RotateX</div>
+    <div class="box rotateY">RotateY</div>
+    <div class="box rotateZ">RotateZ</div>
+    <div class="box translate3d">Translate3D</div>
+    <div class="box translateZ">TranslateZ</div>
+    <div class="box scale3d">Scale3D</div>
+
+    
+</body>
+</html>

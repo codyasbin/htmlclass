@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Transform Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            height: 100%;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: left 0.9s ease, background-color 0.5s ease;
+        }
+        .sidebar.open {
+            background-color: aquamarine;
+            left: 0;
+        }
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #007BFF;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 14px;
+            border-radius: 5px;
+            transition: transform 0.3s ease, ;
+        }
+        /* Existing styles for transformations */
+        .box:hover.translate {
+            transform: translate(50px, 50px);
+        }
+        .box:hover.translateX {
+            transform: translateX(50px);
+        }
+        .box:hover.translateY {
+            transform: translateY(50px);
+        }
+        .box:hover.scale {
+            transform: scale(1.5, 1.5);
+        }
+        .box:hover.scaleX {
+            transform: scaleX(1.5);
+        }
+        .box:hover.scaleY {
+            transform: scaleY(1.5);
+        }
+        .box:hover.rotate {
+            border: block 2px solid #fff;
+            border-radius: 50%;
+            background-color: chartreuse;
+            transition: border-radius 0.9s ease, transform 1.5s ease, background-color 1s ease;
+            transform: scale(2, 2) rotate(360deg);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .box:hover.skew {
+            transform: skew(20deg, 10deg);
+        }
+        .box:hover.skewX {
+            transform: skewX(20deg);
+        }
+        .box:hover.skewY {
+            transform: skewY(20deg);
+        }
+        .box:hover.matrix {
+            transform: matrix(1, 0.5, -0.5, 1, 30, 30);
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-btn" onclick="toggleSidebar()">Toggle Sidebar</button>
+    <div class="sidebar" id="sidebar">
+        <h2>Sidebar</h2>
+        <p>This is a sidebar with smooth toggle functionality.</p>
+        <button onclick="closeSidebar()">Close</button>
+
+    </div>
+    <div class="box translate">translate(50px, 50px)</div>
+    <div class="box translateX">translateX(50px)</div>
+    <div class="box translateY">translateY(50px)</div>
+    <div class="box scale">scale(1.5, 1.5)</div>
+    <div class="box scaleX">scaleX(1.5)</div>
+    <div class="box scaleY">scaleY(1.5)</div>
+    <div class="box rotate">rotate(360deg)</div>
+    <div class="box skew">skew(20deg, 10deg)</div>
+    <div class="box skewX">skewX(20deg)</div>
+    <div class="box skewY">skewY(20deg)</div>
+    <div class="box matrix">matrix(1, 0.5, -0.5, 1, 30, 30)</div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.remove('open');
+        }
+    </script>
+</body>
+</html>
